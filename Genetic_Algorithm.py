@@ -201,8 +201,8 @@ if __name__ == '__main__':
 	# 17/19 != 9+8/9+9+1, as opposed to (9+8)/(9+9+1)
 	# used to tune time vs. exploration vs. convergence
 	genetic_compute(targetValue   = (13.5), 
-					numGenes      = 40, 
-					populationSize= 100, 
-					crossOverRate = 0.7, 
-					mutationRate  = 0.01, 
-					maxGenerations= 200000)
+        					numGenes      = 40, 
+        					populationSize= 100, 
+        					crossOverRate = 0.7, 
+        					mutationRate  = 0.01, 
+        					maxGenerations= 200000)
