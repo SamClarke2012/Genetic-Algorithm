@@ -156,8 +156,8 @@ def genetic_compute(targetValue, numGenes, populationSize, crossOverRate, mutati
 			fitness = 1.0/(targetValue - c.get_result())
 			if fitness > max_fitness: 
 				max_fitness = fitness
-				# print 'Generation - ', generations
-				# print 'Max fitness so far [', c.get_expression(), '=', c.get_result(), '] Fitness = ', fitness, '\n'
+				print 'Generation - ', generations
+				print 'Max fitness so far [', c.get_expression(), '=', c.get_result(), '] Fitness = ', fitness, '\n'
 		except ZeroDivisionError:
 			print 'Solution found! {0} = {1}'.format(c.get_expression(), targetValue)
 			return True
@@ -180,8 +180,8 @@ def genetic_compute(targetValue, numGenes, populationSize, crossOverRate, mutati
 					child.set_fitness(fitness)
 					if fitness > max_fitness: 
 						max_fitness = fitness
-						# print 'Generation - ', generations
-						# print 'Max fitness so far [', child.get_expression(), '=', child.get_result(), '] Fitness = ', fitness, '\n'
+						print 'Generation - ', generations
+						print 'Max fitness so far [', child.get_expression(), '=', child.get_result(), '] Fitness = ', fitness, '\n'
 				except ZeroDivisionError:
 					print 'Solution found! {0} = {1}'.format(child.get_expression(), targetValue)
 					return True
