@@ -193,14 +193,13 @@ if __name__ == '__main__':
 	# 17/19 != 9+8/9+9+1, as opposed to (9+8)/(9+9+1)
 	# used to tune time vs. exploration vs. convergence
 	a = 0 
-	while True: 
 	#print 'Looking for the basic equation of 17/19  [Prime/Prime]'
-		a = genetic_compute(targetValue   = (123.7), 
-						numGenes      = 40, 
-						populationSize= 100, 
-						crossOverRate = 0.65, 
-						mutationRate  = 0.02, 
-						maxGenerations= 200000)
+	a = genetic_compute(targetValue   = (13.5), 
+					numGenes      = 40, 
+					populationSize= 100, 
+					crossOverRate = 0.7, 
+					mutationRate  = 0.01, 
+					maxGenerations= 200000)
 
 
 	# for n in [127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229]:
