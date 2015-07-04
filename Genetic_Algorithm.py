@@ -72,10 +72,10 @@ class Chromosome(object):
 			# Select a random crossover point
 			ptr = random.randrange(0, len(o))
 			# Cross over binary expressions
-			# self.__bits = o[:ptr]+self.__bits[ptr:]
-			# chromosome.set_bits(self.__bits[:ptr]+o[ptr:])
-			child_a = Chromosome(num_genes=self.__num_genes ,bits=o[:ptr]+self.__bits[ptr:])
-			child_b = Chromosome(num_genes=self.__num_genes ,bits=self.__bits[:ptr]+o[ptr:])
+			child_a = Chromosome(num_genes=self.__num_genes ,
+								 bits=o[:ptr]+self.__bits[ptr:])
+			child_b = Chromosome(num_genes=self.__num_genes ,
+								 bits=self.__bits[:ptr]+o[ptr:])
 			return child_a, child_b
 		return self, chromosome
 
@@ -84,7 +84,6 @@ class Chromosome(object):
 			return self.__genes[exp]
 		except:
 			return ""
-
 
 	def decode(self):
 		sym = '+-*/'
@@ -117,12 +116,16 @@ class Chromosome(object):
 			self.__result = 0.0
 		return ans
 
+
+
+
+
+
+
 def roulette_selection(population, crossOver):
 	# roulette wheel 2 members out of the current population
 	# Probability of selection is proportional to fitness.
 	# Such that, Ps = fitnes/sum(all fitnesses) 
-	# the relative difference between two chromosome fitnesses
-	# makes the size of the pieces on the roulette wheel
 	wheel    = []
 	parents  = []
 	totalFitness = 0.0
@@ -192,20 +195,9 @@ if __name__ == '__main__':
 	# no parentheses, prime/prime is unlikely to be completely calculated!
 	# 17/19 != 9+8/9+9+1, as opposed to (9+8)/(9+9+1)
 	# used to tune time vs. exploration vs. convergence
-	a = 0 
-	#print 'Looking for the basic equation of 17/19  [Prime/Prime]'
-	a = genetic_compute(targetValue   = (13.5), 
+	genetic_compute(targetValue   = (13.5), 
 					numGenes      = 40, 
 					populationSize= 100, 
 					crossOverRate = 0.7, 
 					mutationRate  = 0.01, 
 					maxGenerations= 200000)
-
-
-	# for n in [127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229]:
-	# 	genetic_compute(targetValue   = float(n), 
-	# 					numGenes      = 40, 
-	# 					populationSize= 100, 
-	# 					crossOverRate = 0.65, 
-	# 					mutationRate  = 0.02, 
-	# 					maxGenerations= 10000)
