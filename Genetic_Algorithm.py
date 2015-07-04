@@ -107,11 +107,11 @@ class Chromosome(object):
 				if s[c] in sym: ans += s[c]
 		try:
 			# Cull out any trailing operator genes
-			if ans[-1] in sym: ans = ans[:-1]
+		  	if ans[-1] in sym: ans = ans[:-1]
 			self.__gene_expession = ans
 			# eval - floating point
 			self.__result = eval(compile(self.__gene_expession, '<string>', 
-										'eval', __future__.division.compiler_flag))
+							'eval', __future__.division.compiler_flag))
 		except IndexError:
 			self.__gene_expession = ""
 			self.__result = 0.0
@@ -149,8 +149,8 @@ def roulette_selection(population, crossOver):
 				parents.append(population[-1])
 	return parents[0].cross_over(parents[1], crossOver)
 
-def genetic_compute(targetValue, numGenes, populationSize, crossOverRate, mutationRate, maxGenerations):
-
+def genetic_compute(targetValue, numGenes, populationSize, 
+                    crossOverRate, mutationRate, maxGenerations):
 	generations = 1
 	max_fitness = 0.0
 	# Generate a seed population and assign a fitness score (1/tgt-res)
@@ -163,12 +163,13 @@ def genetic_compute(targetValue, numGenes, populationSize, crossOverRate, mutati
 			if fitness > max_fitness: 
 				max_fitness = fitness
 				print 'Generation - ', generations
-				print 'Max fitness so far [', c.get_expression(), '=', c.get_result(), '] Fitness = ', fitness, '\n'
+				print 'Max fitness so far [', c.get_expression(), \
+              '=', c.get_result(), '] Fitness = ', fitness, '\n'
 		except ZeroDivisionError:
 			print 'Solution found! {0} = {1}'.format(c.get_expression(), targetValue)
 			return True
 		c.set_fitness(fitness)
-		population.append(c)
+		population.append(c)  
 
 	while generations < maxGenerations:
 		generations += 1
@@ -187,7 +188,8 @@ def genetic_compute(targetValue, numGenes, populationSize, crossOverRate, mutati
 					if fitness > max_fitness: 
 						max_fitness = fitness
 						print 'Generation - ', generations
-						print 'Max fitness so far [', child.get_expression(), '=', child.get_result(), '] Fitness = ', fitness, '\n'
+						print 'Max fitness so far [', child.get_expression(), \
+                  '=', child.get_result(), '] Fitness = ', fitness, '\n'
 				except ZeroDivisionError:
 					print 'Solution found! {0} = {1}'.format(child.get_expression(), targetValue)
 					return True
